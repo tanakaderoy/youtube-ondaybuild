@@ -16,6 +16,7 @@
 		BAEBCB19256EAF9000139F93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEBCB18256EAF9000139F93 /* Constants.swift */; };
 		BAEBCB20256EB18400139F93 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEBCB1F256EB18400139F93 /* Video.swift */; };
 		BAEBCB25256EB27600139F93 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEBCB24256EB27600139F93 /* Model.swift */; };
+		BAEBCB96256FC5D000139F93 /* PlaylistListItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEBCB95256FC5D000139F93 /* PlaylistListItemResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		BAEBCB18256EAF9000139F93 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAEBCB1F256EB18400139F93 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		BAEBCB24256EB27600139F93 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		BAEBCB95256FC5D000139F93 /* PlaylistListItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListItemResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				BAEBCB1F256EB18400139F93 /* Video.swift */,
 				BAEBCB24256EB27600139F93 /* Model.swift */,
+				BAEBCB95256FC5D000139F93 /* PlaylistListItemResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEBCB05256E524000139F93 /* ViewController.swift in Sources */,
+				BAEBCB96256FC5D000139F93 /* PlaylistListItemResponse.swift in Sources */,
 				BAEBCB01256E524000139F93 /* AppDelegate.swift in Sources */,
 				BAEBCB03256E524000139F93 /* SceneDelegate.swift in Sources */,
 				BAEBCB25256EB27600139F93 /* Model.swift in Sources */,

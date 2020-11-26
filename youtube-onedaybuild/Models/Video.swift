@@ -8,5 +8,6 @@
 import Foundation
 
 struct Video {
-        var title, description, thumbnail, videoId, playlistId: String
+    var title, description, thumbnail, videoId, playlistId: String
+    var published: Date
 }

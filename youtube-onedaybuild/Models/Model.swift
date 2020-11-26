@@ -20,16 +20,31 @@ class Model {
 
         guard let url = urlComponent.url else {return}
 
-        URLSession.shared.dataTask(with: url) { (data, res, err) in
-            if let err = err{
+        URLSession.shared.playlistListItemResponseTask(with: url) { (playListItemRes, res, err) in
+            if let err = err {
                 print(err.localizedDescription)
             }
 
-            if let data = data {
-//                do something
+            if let data = playListItemRes {
+                let vids = data.items.map({Video.toVideoFrom(snippet: $0.snippet)})
 
-                print(String(data: data, encoding: .utf8))
+                dump(vids)
             }
         }.resume()
+    }
+}
+
+extension Video {
+    static func toVideoFrom(snippet: PlaylistListItemResponse.Snippet) -> Video{
+        return Video(title: snippet.title, description: snippet.snippetDescription, thumbnail: snippet.thumbnails.high.url, videoId: snippet.resourceID.videoID, playlistId: snippet.playlistID, published: Date.fromString(isoDate: snippet.publishedAt))
+    }
+}
+
+extension Date {
+    static func fromString(isoDate:String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return dateFormatter.date(from:isoDate) ?? Date()
     }
 }
