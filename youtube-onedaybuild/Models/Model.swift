@@ -7,8 +7,20 @@
 
 import Foundation
 
+
+
+
+protocol ModelDelegate {
+    func videosFetched(_ vids: [Video])
+}
+
+
+
 class Model {
+    var delegate: ModelDelegate?
+    typealias videoClosure = ([Video]) -> ()
     func getVideos() {
+        //(_ completion: @escaping videoClosure)
         var urlComponent = URLComponents()
         urlComponent.scheme = "https"
         urlComponent.host = Constants.BASE_URL
@@ -26,9 +38,11 @@ class Model {
             }
 
             if let data = playListItemRes {
-                let vids = data.items.map({Video.toVideoFrom(snippet: $0.snippet)})
 
-                dump(vids)
+                let vids = data.items.map({Video.toVideoFrom(snippet: $0.snippet)})
+                self.delegate?.videosFetched(vids)
+                //completion(vids)
+
             }
         }.resume()
     }
@@ -46,5 +60,12 @@ extension Date {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return dateFormatter.date(from:isoDate) ?? Date()
+    }
+
+    func toString(_ format:String = "MM dd, yyy") -> String {
+        let dateFormmatter = DateFormatter()
+        dateFormmatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormmatter.dateFormat = format
+        return dateFormmatter.string(from: self)
     }
 }
